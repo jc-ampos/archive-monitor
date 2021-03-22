@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ProvidersController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -28,8 +29,8 @@ Route::get('/dashboard', function () {
     return Inertia::render('Dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
-Route::get('/dashboard-second', function () {
-    return Inertia::render('Dashboard-Second');
-})->middleware(['auth', 'verified'])->name('dashboard-second');
+Route::get('/test', [ProvidersController::class, 'create'])
+    ->middleware(['auth', 'verified'])
+    ->name('test');
 
 require __DIR__.'/auth.php';
